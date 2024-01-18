@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://b43k1ehajpo18"]
+
+[ext_resource type="PackedScene" uid="uid://jpp118n3j67h" path="res://Game (source)/CardHandler.tscn" id="1_whvs6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ilq7"]
+bg_color = Color(0.207843, 0.396078, 0.301961, 1)
+
+[node name="Main" type="Node"]
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ilq7")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="CardHandler" parent="." instance=ExtResource("1_whvs6")]
+offset_left = 238.0
+offset_top = 87.0
+offset_right = 300.0
+offset_bottom = 175.0
