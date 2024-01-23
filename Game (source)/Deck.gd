@@ -12,10 +12,13 @@ var full_deck = [
 var current_deck = []
 
 @onready var Dealer = $"../Dealer"
+@onready var card1 = $"../Dealer/Card1"
 
 func deal_cards ():
 	current_deck = full_deck.duplicate() #Initilize new deck
 	var dealer_deck = [_new_card(), _new_card(), _new_card(), _new_card(), _new_card()]
+	
+	
 	
 	#Assign cards to the player
 
