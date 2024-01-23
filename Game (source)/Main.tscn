@@ -1,35 +1,113 @@
-[gd_scene load_steps=3 format=3 uid="uid://b43k1ehajpo18"]
+[gd_scene load_steps=7 format=3 uid="uid://b43k1ehajpo18"]
 
-[ext_resource type="PackedScene" uid="uid://jpp118n3j67h" path="res://Game (source)/CardHandler.tscn" id="1_whvs6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ilq7"]
-bg_color = Color(0.207843, 0.396078, 0.301961, 1)
+[ext_resource type="Script" path="res://Game (source)/Main.gd" id="1_68jb2"]
+[ext_resource type="Script" path="res://Game (source)/Deck.gd" id="2_gvjfh"]
+[ext_resource type="Texture2D" uid="uid://6crh8fcs6j5c" path="res://Assets/Sprites/Cards/cardBack.png" id="3_e2vpn"]
+[ext_resource type="Texture2D" uid="uid://cny6p6tqf6jq" path="res://Assets/Sprites/Cards/cardOutline.png" id="4_2v00g"]
+[ext_resource type="Texture2D" uid="uid://dt8o0ow0wl0ss" path="res://Assets/Sprites/buttonBase.png" id="5_vnjsd"]
+[ext_resource type="Texture2D" uid="uid://dsi22hy6e2o05" path="res://Assets/Sprites/greenButton.png" id="6_t2c8y"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_68jb2")
 
-[node name="Background" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2ilq7")
-metadata/_edit_use_anchors_ = true
+[node name="Deck" type="Node" parent="."]
+script = ExtResource("2_gvjfh")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-metadata/_edit_use_anchors_ = true
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)
 
-[node name="CardHandler" parent="." instance=ExtResource("1_whvs6")]
-offset_left = 238.0
-offset_top = 87.0
-offset_right = 300.0
-offset_bottom = 175.0
+[node name="PlayerHand" type="Node2D" parent="."]
+position = Vector2(0, 120)
+
+[node name="Card1" type="Sprite2D" parent="PlayerHand"]
+position = Vector2(-40, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="Card2" type="Sprite2D" parent="PlayerHand"]
+position = Vector2(40, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="CardOutlines" type="Sprite2D" parent="PlayerHand"]
+position = Vector2(-40, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="CardOutline" type="Sprite2D" parent="PlayerHand/CardOutlines"]
+position = Vector2(80, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="Dealer" type="Node2D" parent="."]
+
+[node name="Card1" type="Sprite2D" parent="Dealer"]
+position = Vector2(-144, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="Card2" type="Sprite2D" parent="Dealer"]
+position = Vector2(-72, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="Card3" type="Sprite2D" parent="Dealer"]
+texture = ExtResource("3_e2vpn")
+
+[node name="Card4" type="Sprite2D" parent="Dealer"]
+position = Vector2(72, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="Card5" type="Sprite2D" parent="Dealer"]
+position = Vector2(144, 0)
+texture = ExtResource("3_e2vpn")
+
+[node name="CardOutlines" type="Sprite2D" parent="Dealer"]
+texture = ExtResource("4_2v00g")
+
+[node name="CardOutline" type="Sprite2D" parent="Dealer/CardOutlines"]
+position = Vector2(-72, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="CardOutline" type="Sprite2D" parent="Dealer/CardOutlines/CardOutline"]
+position = Vector2(-72, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="CardOutline" type="Sprite2D" parent="Dealer/CardOutlines/CardOutline/CardOutline"]
+position = Vector2(216, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="CardOutline" type="Sprite2D" parent="Dealer/CardOutlines/CardOutline/CardOutline/CardOutline"]
+position = Vector2(72, 0)
+texture = ExtResource("4_2v00g")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -344.0
+offset_top = -192.0
+offset_right = 344.0
+offset_bottom = 192.0
+
+[node name="ButtonPanel" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 344.0
+offset_top = 192.0
+offset_right = 384.0
+offset_bottom = 232.0
+
+[node name="ButtonBase" type="Sprite2D" parent="UI/ButtonPanel"]
+position = Vector2(-240, 120)
+texture = ExtResource("5_vnjsd")
+
+[node name="Button" type="Button" parent="UI/ButtonPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -192.0
+offset_right = -312.0
+offset_bottom = -168.0
+icon = ExtResource("6_t2c8y")
+
+[node name="Button2" type="Button" parent="UI/ButtonPanel"]
+offset_left = -344.0
+offset_top = -192.0
+offset_right = -336.0
+offset_bottom = -184.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bypyets3246w2"]
+
+[ext_resource type="Texture2D" uid="uid://6crh8fcs6j5c" path="res://Assets/Sprites/Cards/cardBack.png" id="1_nrsmy"]
+
+[node name="Cards" type="Sprite2D"]
+texture = ExtResource("1_nrsmy")
