@@ -10,20 +10,37 @@ var full_deck = [
 ]
 
 var current_deck = []
+var current_deck = full_deck.duplicate()
+const cardPath = "res://Assets/Sprites/Cards/"
 
 @onready var Dealer = $"../Dealer"
 @onready var card1 = $"../Dealer/Card1"
+@onready var card2 = $"../Dealer/Card2"
+@onready var card3 = $"../Dealer/Card3"
+@onready var card4 = $"../Dealer/Card4"
+@onready var card5 = $"../Dealer/Card5"
+func create_deck():
+	var current_deck = full_deck.duplicate()
+	return current_deck
 
 func deal_cards ():
-	current_deck = full_deck.duplicate() #Initilize new deck
 	var dealer_deck = [_new_card(), _new_card(), _new_card(), _new_card(), _new_card()]
-	
-	
-	
-	#Assign cards to the player
+	#Set Cards
+	card1.set_texture(load(str(cardPath,dealer_deck[0],".png")))
+	card2.set_texture(load(str(cardPath,dealer_deck[1],".png")))
+	card3.set_texture(load(str(cardPath,dealer_deck[2],".png")))
+	card4.set_texture(load(str(cardPath,dealer_deck[3],".png")))
+	card5.set_texture(load(str(cardPath,dealer_deck[4],".png")))
 
 func _new_card ():
 	var card = current_deck[randi() % current_deck.size()] #draw a random deck
 	current_deck.erase(card)
 	return card
 	
+func _ready ():
+	create_deck()
+	deal_cards()
+	
+func _input(ev):
+	if Input.is_key_pressed(KEY_R):
+		deal_cards()
